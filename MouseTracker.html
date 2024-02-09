@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .Container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: beige;
+        }
+
+        svg {
+            width: 30vw;
+            height: 30vh;
+            border: solid red 1px;
+            background-color: yellow;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+
+        }
+    </style>
+</head>
+
+<body onmousemove="Print(event)">
+    <div class="Container">
+        <div class="C">
+            <svg id="svg" height="0px" width="0px">
+                <line id="Line" x1="0" y1="0" x2="0" y2="0" style="stroke:black;stroke-width:2" />
+            </svg>
+        </div>
+        <p id="Coor">Click To get the Coordinates</p>
+    </div>
+
+</body>
+<script>
+    var svg = document.getElementById("svg");
+    var Bar = document.getElementById("Bar");
+    var Coor = document.getElementById("Coor");
+    var Line = document.getElementById("Line")
+    function Print(event) {
+        let x = event.pageX;
+        let y = event.pageY;
+
+        Coor.innerText = "X Coordinate " + x + " Y Coordinate " + y;
+        Line.setAttribute("x2", x)
+        Line.setAttribute("y2", y)
+        svg.style.transform = "rotateX(" + x / 30 + "deg)"
+        svg.style.transform = "rotateY(" + y / 30 + "deg)"
+
+    }
+</script>
+
+</html>
